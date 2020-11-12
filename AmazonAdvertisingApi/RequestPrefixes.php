@@ -15,9 +15,10 @@ class RequestPrefixes
 	}
 
     public $requestPrefixStrings = array(
-		"display" => "sd/"
-		"products" => "{$this->apiVersion}/sp/"
-		"brands"   => "sb/"
-		"profile" => "{$this->apiVersion}/"
+		"display" => "sd/",
+		"products" => "{$this->apiVersion}/sp/",
+		"brands"   => "sb/",
+		"profile" => "{$this->apiVersion}/",
+		"report" => "{$this->apiVersion}/"
     );
 }

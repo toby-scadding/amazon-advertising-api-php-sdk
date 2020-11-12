@@ -737,7 +737,7 @@ class Client
 
     public function bulkGetSponsoredProductsAsinKeywordSuggestions($data)
     {
-        return $this->_operation(
+        return $this->_operation(   
             "{$this->prefixes["products"]}asins/suggested/keywords", $data, "POST"
         );
     }
@@ -763,14 +763,18 @@ class Client
         return $req;
     }
 
-    public function requestReport($recordType, $data = null)
+    public function requestSponsoredProductsReport($recordType, $data = null)
     {
-        return $this->_operation("{$recordType}/report", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}{$recordType}/report", $data, "POST"
+        );
     }
 
     public function getReport($reportId)
     {
-        $req = $this->_operation("reports/{$reportId}");
+        $req = $this->_operation(
+            "{$this->prefixes["report"]}reports/{$reportId}"
+        );
         if ($req["success"]) {
             $json = json_decode($req["response"], true);
             if ($json["status"] == "SUCCESS") {
