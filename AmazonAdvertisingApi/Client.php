@@ -369,39 +369,88 @@ class Client
         );
     }
 
-    public function getBiddableKeyword($keywordId)
+    public function getSponsoredProductsBiddableKeyword($keywordId)
     {
-        return $this->_operation("keywords/{$keywordId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords/{$keywordId}"
+        );
     }
 
-    public function getBiddableKeywordEx($keywordId)
+    public function getSponsoredProductsBiddableKeywordEx($keywordId)
     {
-        return $this->_operation("keywords/extended/{$keywordId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords/extended/{$keywordId}"
+        );
     }
 
-    public function createBiddableKeywords($data)
+    public function createSponsoredProductsBiddableKeywords($data)
     {
-        return $this->_operation("keywords", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords", $data, "POST"
+        );
     }
 
-    public function updateBiddableKeywords($data)
+    public function updateSponsoredProductsBiddableKeywords($data)
     {
-        return $this->_operation("keywords", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords", $data, "PUT"
+        );
     }
 
-    public function archiveBiddableKeyword($keywordId)
+    public function archiveSponsoredProductsBiddableKeyword($keywordId)
     {
-        return $this->_operation("keywords/{$keywordId}", null, "DELETE");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords/{$keywordId}", null, "DELETE"
+        );
     }
 
-    public function listBiddableKeywords($data = null)
+    public function listSponsoredProductsBiddableKeywords($data = null)
     {
-        return $this->_operation("keywords", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords", $data
+        );
     }
 
-    public function listBiddableKeywordsEx($data = null)
+    public function listSponsoredProductsBiddableKeywordsEx($data = null)
     {
-        return $this->_operation("keywords/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords/extended", $data
+        );
+    }
+
+    public function getSponsoredBrandsBiddableKeyword($keywordId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}keywords/{$keywordId}"
+        );
+    }
+
+    public function createSponsoredBrandsBiddableKeywords($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}keywords", $data, "POST"
+        );
+    }
+
+    public function updateSponsoredBrandsBiddableKeywords($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}keywords", $data, "PUT"
+        );
+    }
+
+    public function archiveSponsoredBrandsBiddableKeyword($keywordId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}keywords/{$keywordId}", null, "DELETE"
+        );
+    }
+
+    public function listSponsoredBrandsBiddableKeywords($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}keywords", $data
+        );
     }
 
     public function getNegativeKeyword($keywordId)
