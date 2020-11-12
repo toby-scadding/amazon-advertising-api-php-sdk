@@ -683,59 +683,77 @@ class Client
             "{$this->prefixes["display"]}productAds/extended", $data
         );
     }
-    
-    public function getAdGroupBidRecommendations($adGroupId)
+
+    public function getSponsoredProductsAdGroupBidRecommendations($adGroupId)
     {
-        return $this->_operation("adGroups/{$adGroupId}/bidRecommendations");
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/{$adGroupId}/bidRecommendations"
+        );
     }
 
-    public function getKeywordBidRecommendations($keywordId)
+    public function getSponsoredProductsKeywordBidRecommendations($keywordId)
     {
-        return $this->_operation("keywords/{$keywordId}/bidRecommendations");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords/{$keywordId}/bidRecommendations"
+        );
     }
 
-    public function bulkGetKeywordBidRecommendations($adGroupId, $data)
+    public function bulkGetSponsoredProductsKeywordBidRecommendations($adGroupId, $data)
     {
         $data = array(
             "adGroupId" => $adGroupId,
             "keywords" => $data);
-        return $this->_operation("keywords/bidRecommendations", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}keywords/bidRecommendations", $data, "POST"
+        );
     }
 
-    public function getAdGroupKeywordSuggestions($data)
+    public function getSponsoredProductsAdGroupKeywordSuggestions($data)
     {
         $adGroupId = $data["adGroupId"];
         unset($data["adGroupId"]);
-        return $this->_operation("adGroups/{$adGroupId}/suggested/keywords", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/{$adGroupId}/suggested/keywords", $data
+        );
     }
 
-    public function getAdGroupKeywordSuggestionsEx($data)
+    public function getSponsoredProductsAdGroupKeywordSuggestionsEx($data)
     {
         $adGroupId = $data["adGroupId"];
         unset($data["adGroupId"]);
-        return $this->_operation("adGroups/{$adGroupId}/suggested/keywords/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/{$adGroupId}/suggested/keywords/extended", $data
+        );
     }
 
-    public function getAsinKeywordSuggestions($data)
+    public function getSponsoredProductsAsinKeywordSuggestions($data)
     {
         $asin = $data["asin"];
         unset($data["asin"]);
-        return $this->_operation("asins/{$asin}/suggested/keywords", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}asins/{$asin}/suggested/keywords", $data
+        );
     }
 
-    public function bulkGetAsinKeywordSuggestions($data)
+    public function bulkGetSponsoredProductsAsinKeywordSuggestions($data)
     {
-        return $this->_operation("asins/suggested/keywords", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}asins/suggested/keywords", $data, "POST"
+        );
     }
 
-    public function requestSnapshot($recordType, $data = null)
+    public function requestSponsoredProductsSnapshot($recordType, $data = null)
     {
-        return $this->_operation("{$recordType}/snapshot", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}{$recordType}/snapshot", $data, "POST"
+        );
     }
 
-    public function getSnapshot($snapshotId)
+    public function getSponsoredProductsSnapshot($snapshotId)
     {
-        $req = $this->_operation("snapshots/{$snapshotId}");
+        $req = $this->_operation(
+            "{$this->prefixes["products"]}snapshots/{$snapshotId}"
+        );
         if ($req["success"]) {
             $json = json_decode($req["response"], true);
             if ($json["status"] == "SUCCESS") {
