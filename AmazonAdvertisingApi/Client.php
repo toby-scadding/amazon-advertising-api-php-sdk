@@ -3,6 +3,7 @@ namespace AmazonAdvertisingApi;
 
 require_once "Versions.php";
 require_once "Regions.php";
+require_once "RequestPrefixes.php";
 require_once "CurlRequest.php";
 
 class Client
@@ -33,6 +34,10 @@ class Client
 
         $versions = new Versions();
         $this->versionStrings = $versions->versionStrings;
+
+        $requestPrefixes = new RequestPrefixes();
+        $this->prefixes = $requestPrefixes->requestPrefixStrings
+
 
         $this->apiVersion = $this->versionStrings["apiVersion"];
         $this->applicationVersion = $this->versionStrings["applicationVersion"];
@@ -96,57 +101,163 @@ class Client
 
     public function registerProfile($data)
     {
-        return $this->_operation("profiles/register", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["profile"]}profiles/register", $data, "PUT"
+        );
     }
 
     public function registerProfileStatus($profileId)
     {
-        return $this->_operation("profiles/register/{$profileId}/status");
+        return $this->_operation(
+            "{$this->prefixes["profile"]}profiles/register/{$profileId}/status"
+        );
     }
 
     public function getProfile($profileId)
     {
-        return $this->_operation("profiles/{$profileId}");
+        return $this->_operation(
+            "{$this->prefixes["profile"]}profiles/{$profileId}"
+        );
     }
 
     public function updateProfiles($data)
     {
-        return $this->_operation("profiles", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["profile"]}profiles", $data, "PUT"
+        );
     }
 
-    public function getCampaign($campaignId)
+    public function getSponsoredProductsCampaign($campaignId)
     {
-        return $this->_operation("campaigns/{$campaignId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/{$campaignId}"
+        );
     }
 
-    public function getCampaignEx($campaignId)
+    public function getSponsoredProductsCampaignEx($campaignId)
     {
-        return $this->_operation("campaigns/extended/{$campaignId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/extended/{$campaignId}"
+        );
     }
 
-    public function createCampaigns($data)
+    public function createSponsoredProductsCampaigns($data)
     {
-        return $this->_operation("campaigns", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns", $data, "POST"
+        );
     }
 
-    public function updateCampaigns($data)
+    public function updateSponsoredProductsCampaigns($data)
     {
-        return $this->_operation("campaigns", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns", $data, "PUT"
+        );
     }
 
-    public function archiveCampaign($campaignId)
+    public function archiveSponsoredProductsCampaign($campaignId)
     {
-        return $this->_operation("campaigns/{$campaignId}", null, "DELETE");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/{$campaignId}", null, "DELETE"
+        );
     }
 
-    public function listCampaigns($data = null)
+    public function listSponsoredProductsCampaigns($data = null)
     {
-        return $this->_operation("campaigns", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns", $data
+        );
     }
 
-    public function listCampaignsEx($data = null)
+    public function listSponsoredProductsCampaignsEx($data = null)
     {
-        return $this->_operation("campaigns/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/extended", $data
+        );
+    }
+
+        public function getSponsoredProductsCampaign($campaignId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/{$campaignId}"
+        );
+    }
+
+    public function getSponsoredProductsCampaignEx($campaignId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/extended/{$campaignId}"
+        );
+    }
+
+    public function createSponsoredProductsCampaigns($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns", $data, "POST"
+        );
+    }
+
+    public function updateSponsoredProductsCampaigns($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns", $data, "PUT"
+        );
+    }
+
+    public function archiveSponsoredProductsCampaign($campaignId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/{$campaignId}", null, "DELETE"
+        );
+    }
+
+    public function listSponsoredProductsCampaigns($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns", $data
+        );
+    }
+
+    public function listSponsoredProductsCampaignsEx($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaigns/extended", $data
+        );
+    }
+
+    public function getSponsoredBrandsCampaign($campaignId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}campaigns/{$campaignId}"
+        );
+    }
+
+    public function createSponsoredBrandsCampaigns($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}campaigns", $data, "POST"
+        );
+    }
+
+    public function updateSponsoredBrandsCampaigns($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}campaigns", $data, "PUT"
+        );
+    }
+
+    public function archiveSponsoredBrandsCampaign($campaignId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}campaigns/{$campaignId}", null, "DELETE"
+        );
+    }
+
+    public function listSponsoredBrandsCampaigns($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}campaigns", $data
+        );
     }
 
     public function getAdGroup($adGroupId)
@@ -572,9 +683,9 @@ class Client
         if (array_key_exists(strtolower($this->config["region"]), $this->endpoints)) {
             $region_code = strtolower($this->config["region"]);
             if ($this->config["sandbox"]) {
-                $this->endpoint = "https://{$this->endpoints[$region_code]["sandbox"]}/{$this->apiVersion}";
+                $this->endpoint = "https://{$this->endpoints[$region_code]["sandbox"]}/";
             } else {
-                $this->endpoint = "https://{$this->endpoints[$region_code]["prod"]}/{$this->apiVersion}";
+                $this->endpoint = "https://{$this->endpoints[$region_code]["prod"]}/";
             }
             $this->tokenUrl = $this->endpoints[$region_code]["tokenUrl"];
         } else {
