@@ -6,6 +6,8 @@ require_once "Versions.php";
 
 class RequestPrefixes
 {
+	private $versionStrings = null;
+
 	public function __construct() 
 	{
 		$versions = new Versions();
