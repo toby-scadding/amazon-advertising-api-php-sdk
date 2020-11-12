@@ -537,39 +537,53 @@ class Client
         );
     }
 
-    public function getCampaignNegativeKeyword($keywordId)
+    public function getSponsoredProductsCampaignNegativeKeyword($keywordId)
     {
-        return $this->_operation("campaignNegativeKeywords/{$keywordId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords/{$keywordId}"
+        );
     }
 
-    public function getCampaignNegativeKeywordEx($keywordId)
+    public function getSponsoredProductsCampaignNegativeKeywordEx($keywordId)
     {
-        return $this->_operation("campaignNegativeKeywords/extended/{$keywordId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords/extended/{$keywordId}"
+        );
     }
 
-    public function createCampaignNegativeKeywords($data)
+    public function createSponsoredProductsCampaignNegativeKeywords($data)
     {
-        return $this->_operation("campaignNegativeKeywords", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords", $data, "POST"
+        );
     }
 
-    public function updateCampaignNegativeKeywords($data)
+    public function updateSponsoredProductsCampaignNegativeKeywords($data)
     {
-        return $this->_operation("campaignNegativeKeywords", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords", $data, "PUT"
+        );
     }
 
-    public function removeCampaignNegativeKeyword($keywordId)
+    public function removeSponsoredProductsCampaignNegativeKeyword($keywordId)
     {
-        return $this->_operation("campaignNegativeKeywords/{$keywordId}", null, "DELETE");
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords/{$keywordId}", null, "DELETE"
+        );
     }
 
-    public function listCampaignNegativeKeywords($data = null)
+    public function listSponsoredProductsCampaignNegativeKeywords($data = null)
     {
-        return $this->_operation("campaignNegativeKeywords", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords", $data
+        );
     }
 
-    public function listCampaignNegativeKeywordsEx($data = null)
+    public function listSponsoredProductsCampaignNegativeKeywordsEx($data = null)
     {
-        return $this->_operation("campaignNegativeKeywords/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}campaignNegativeKeywords/extended", $data
+        );
     }
 
     public function getProductAd($productAdId)
