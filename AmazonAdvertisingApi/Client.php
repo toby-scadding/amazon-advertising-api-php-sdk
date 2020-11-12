@@ -16,7 +16,6 @@ class Client
         "refreshToken" => null,
         "sandbox" => false);
 
-    private $apiVersion = null;
     private $applicationVersion = null;
     private $userAgent = null;
     private $endpoint = null;
@@ -38,8 +37,6 @@ class Client
         $requestPrefixes = new RequestPrefixes();
         $this->prefixes = $requestPrefixes->requestPrefixStrings
 
-
-        $this->apiVersion = $this->versionStrings["apiVersion"];
         $this->applicationVersion = $this->versionStrings["applicationVersion"];
         $this->userAgent = "AdvertisingAPI PHP Client Library v{$this->applicationVersion}";
 

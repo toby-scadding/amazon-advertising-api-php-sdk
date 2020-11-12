@@ -6,18 +6,18 @@ require_once "Versions.php";
 
 class RequestPrefixes
 {
-	private $versionStrings = null;
+	private $apiVersion = null;
 
 	public function __construct() 
 	{
 		$versions = new Versions();
-		$this->versionStrings = $versions->versionStrings;
+		$this->apiVersion = $versions->versionStrings["apiVersion"];
 	}
 
     public $requestPrefixStrings = array(
     	"display" => "sd/"
-        "products" => "{$this->versionStrings["apiVersion"]}/sp/"
+        "products" => "{$this->apiVersion}/sp/"
         "brands"   => "sb/"
-        "profile" => "{$this->versionStrings["apiVersion"]}/"
+        "profile" => "{$this->apiVersion}/"
     );
 }
