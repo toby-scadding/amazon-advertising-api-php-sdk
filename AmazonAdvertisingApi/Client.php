@@ -173,52 +173,52 @@ class Client
         );
     }
 
-        public function getSponsoredProductsCampaign($campaignId)
+    public function getSponsoredDisplayCampaign($campaignId)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns/{$campaignId}"
+            "{$this->prefixes["display"]}campaigns/{$campaignId}"
         );
     }
 
-    public function getSponsoredProductsCampaignEx($campaignId)
+    public function getSponsoredDisplayCampaignEx($campaignId)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns/extended/{$campaignId}"
+            "{$this->prefixes["display"]}campaigns/extended/{$campaignId}"
         );
     }
 
-    public function createSponsoredProductsCampaigns($data)
+    public function createSponsoredDisplayCampaigns($data)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns", $data, "POST"
+            "{$this->prefixes["display"]}campaigns", $data, "POST"
         );
     }
 
-    public function updateSponsoredProductsCampaigns($data)
+    public function updateSponsoredDisplayCampaigns($data)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns", $data, "PUT"
+            "{$this->prefixes["display"]}campaigns", $data, "PUT"
         );
     }
 
-    public function archiveSponsoredProductsCampaign($campaignId)
+    public function archiveSponsoredDisplayCampaign($campaignId)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns/{$campaignId}", null, "DELETE"
+            "{$this->prefixes["display"]}campaigns/{$campaignId}", null, "DELETE"
         );
     }
 
-    public function listSponsoredProductsCampaigns($data = null)
+    public function listSponsoredDisplayCampaigns($data = null)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns", $data
+            "{$this->prefixes["display"]}campaigns", $data
         );
     }
 
-    public function listSponsoredProductsCampaignsEx($data = null)
+    public function listSponsoredDisplayCampaignsEx($data = null)
     {
         return $this->_operation(
-            "{$this->prefixes["products"]}campaigns/extended", $data
+            "{$this->prefixes["display"]}campaigns/extended", $data
         );
     }
 
@@ -257,39 +257,116 @@ class Client
         );
     }
 
-    public function getAdGroup($adGroupId)
+    public function getSponsoredProdcutsAdGroup($adGroupId)
     {
-        return $this->_operation("adGroups/{$adGroupId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/{$adGroupId}"
+        );
     }
 
-    public function getAdGroupEx($adGroupId)
+    public function getSponsoredProdcutsAdGroupEx($adGroupId)
     {
-        return $this->_operation("adGroups/extended/{$adGroupId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/extended/{$adGroupId}"
+        );
     }
 
-    public function createAdGroups($data)
+    public function createSponsoredProdcutsAdGroups($data)
     {
-        return $this->_operation("adGroups", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups", $data, "POST"
+        );
     }
 
-    public function updateAdGroups($data)
+    public function updateSponsoredProdcutsAdGroups($data)
     {
-        return $this->_operation("adGroups", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups", $data, "PUT"
+        );
     }
 
-    public function archiveAdGroup($adGroupId)
+    public function archiveSponsoredProdcutsAdGroup($adGroupId)
     {
-        return $this->_operation("adGroups/{$adGroupId}", null, "DELETE");
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/{$adGroupId}", null, "DELETE"
+        );
     }
 
-    public function listAdGroups($data = null)
+    public function listSponsoredProdcutsAdGroups($data = null)
     {
-        return $this->_operation("adGroups", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups", $data
+        );
     }
 
-    public function listAdGroupsEx($data = null)
+    public function listSponsoredProdcutsAdGroupsEx($data = null)
     {
-        return $this->_operation("adGroups/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}adGroups/extended", $data
+        );
+    }
+
+    public function getSponsoredDisplayAdGroup($adGroupId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups/{$adGroupId}"
+        );
+    }
+
+    public function getSponsoredDisplayAdGroupEx($adGroupId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups/extended/{$adGroupId}"
+        );
+    }
+
+    public function createSponsoredDisplayAdGroups($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups", $data, "POST"
+        );
+    }
+
+    public function updateSponsoredDisplayAdGroups($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups", $data, "PUT"
+        );
+    }
+
+    public function archiveSponsoredDisplayAdGroup($adGroupId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups/{$adGroupId}", null, "DELETE"
+        );
+    }
+
+    public function listSponsoredDisplayAdGroups($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups", $data
+        );
+    }
+
+    public function listSponsoredDisplayAdGroupsEx($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}adGroups/extended", $data
+        );
+    }
+
+    public function getSponsoredBrandsAdGroup($adGroupId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}adGroups/{$adGroupId}"
+        );
+    }
+
+    public function listSponsoredBrandsAdGroups($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}adGroups", $data
+        );
     }
 
     public function getBiddableKeyword($keywordId)
