@@ -453,39 +453,88 @@ class Client
         );
     }
 
-    public function getNegativeKeyword($keywordId)
+    public function getSponsoredProductsNegativeKeyword($keywordId)
     {
-        return $this->_operation("negativeKeywords/{$keywordId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords/{$keywordId}"
+        );
     }
 
-    public function getNegativeKeywordEx($keywordId)
+    public function getSponsoredProductsNegativeKeywordEx($keywordId)
     {
-        return $this->_operation("negativeKeywords/extended/{$keywordId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords/extended/{$keywordId}"
+        );
     }
 
-    public function createNegativeKeywords($data)
+    public function createSponsoredProductsNegativeKeywords($data)
     {
-        return $this->_operation("negativeKeywords", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords", $data, "POST"
+        );
     }
 
-    public function updateNegativeKeywords($data)
+    public function updateSponsoredProductsNegativeKeywords($data)
     {
-        return $this->_operation("negativeKeywords", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords", $data, "PUT"
+        );
     }
 
-    public function archiveNegativeKeyword($keywordId)
+    public function archiveSponsoredProductsNegativeKeyword($keywordId)
     {
-        return $this->_operation("negativeKeywords/{$keywordId}", null, "DELETE");
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords/{$keywordId}", null, "DELETE"
+        );
     }
 
-    public function listNegativeKeywords($data = null)
+    public function listSponsoredProductsNegativeKeywords($data = null)
     {
-        return $this->_operation("negativeKeywords", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords", $data
+        );
     }
 
-    public function listNegativeKeywordsEx($data = null)
+    public function listSponsoredProductsNegativeKeywordsEx($data = null)
     {
-        return $this->_operation("negativeKeywords/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}negativeKeywords/extended", $data
+        );
+    }
+
+    public function getSponsoredBrandsNegativeKeyword($keywordId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}negativeKeywords/{$keywordId}"
+        );
+    }
+
+    public function createSponsoredBrandsNegativeKeywords($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}negativeKeywords", $data, "POST"
+        );
+    }
+
+    public function updateSponsoredBrandsNegativeKeywords($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}negativeKeywords", $data, "PUT"
+        );
+    }
+
+    public function archiveSponsoredBrandsNegativeKeyword($keywordId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}negativeKeywords/{$keywordId}", null, "DELETE"
+        );
+    }
+
+    public function listSponsoredBrandsNegativeKeywords($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["brands"]}negativeKeywords", $data
+        );
     }
 
     public function getCampaignNegativeKeyword($keywordId)
