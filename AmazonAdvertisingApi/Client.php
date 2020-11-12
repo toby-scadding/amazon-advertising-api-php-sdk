@@ -586,41 +586,104 @@ class Client
         );
     }
 
-    public function getProductAd($productAdId)
+    public function getSponsoredProductsProductAd($productAdId)
     {
-        return $this->_operation("productAds/{$productAdId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds/{$productAdId}"
+        );
     }
 
-    public function getProductAdEx($productAdId)
+    public function getSponsoredProductsProductAdEx($productAdId)
     {
-        return $this->_operation("productAds/extended/{$productAdId}");
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds/extended/{$productAdId}"
+        );
     }
 
-    public function createProductAds($data)
+    public function createSponsoredProductsProductAds($data)
     {
-        return $this->_operation("productAds", $data, "POST");
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds", $data, "POST"
+        );
     }
 
-    public function updateProductAds($data)
+    public function updateSponsoredProductsProductAds($data)
     {
-        return $this->_operation("productAds", $data, "PUT");
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds", $data, "PUT"
+        );
     }
 
-    public function archiveProductAd($productAdId)
+    public function archiveSponsoredProductsProductAd($productAdId)
     {
-        return $this->_operation("productAds/{$productAdId}", null, "DELETE");
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds/{$productAdId}", null, "DELETE"
+        );
     }
 
-    public function listProductAds($data = null)
+    public function listSponsoredProductsProductAds($data = null)
     {
-        return $this->_operation("productAds", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds", $data
+        );
     }
 
-    public function listProductAdsEx($data = null)
+    public function listSponsoredProductsProductAdsEx($data = null)
     {
-        return $this->_operation("productAds/extended", $data);
+        return $this->_operation(
+            "{$this->prefixes["products"]}productAds/extended", $data
+        );
     }
 
+    public function getSponsoredDisplayProductAd($productAdId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds/{$productAdId}"
+        );
+    }
+
+    public function getSponsoredDisplayProductAdEx($productAdId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds/extended/{$productAdId}"
+        );
+    }
+
+    public function createSponsoredDisplayProductAds($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds", $data, "POST"
+        );
+    }
+
+    public function updateSponsoredDisplayProductAds($data)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds", $data, "PUT"
+        );
+    }
+
+    public function archiveSponsoredDisplayProductAd($productAdId)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds/{$productAdId}", null, "DELETE"
+        );
+    }
+
+    public function listSponsoredDisplayProductAds($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds", $data
+        );
+    }
+
+    public function listSponsoredDisplayProductAdsEx($data = null)
+    {
+        return $this->_operation(
+            "{$this->prefixes["display"]}productAds/extended", $data
+        );
+    }
+    
     public function getAdGroupBidRecommendations($adGroupId)
     {
         return $this->_operation("adGroups/{$adGroupId}/bidRecommendations");
