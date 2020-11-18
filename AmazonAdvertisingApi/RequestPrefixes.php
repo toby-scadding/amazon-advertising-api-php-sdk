@@ -24,6 +24,6 @@ class RequestPrefixes
     		default:
     			throw new \Exception("Request type unsupported: " . $requestType);
     	}
-    	return $prefix
+    	return $prefix;
     }
 }

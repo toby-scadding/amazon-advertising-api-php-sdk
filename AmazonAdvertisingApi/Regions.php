@@ -3,7 +3,7 @@ namespace AmazonAdvertisingApi;
 
 class Regions
 {
-    public static function getEndpoint($region, $type)
+    public static function getEndpoint($region, $type) {
         $endpoints = array(
             "na" => array(
                 "prod"     => "advertising-api.amazon.com",
@@ -17,4 +17,5 @@ class Regions
         );
         $endpoint = "https://" . $endpoints[$region][$type] . "/";
         return $endpoint;
+    }
 }
