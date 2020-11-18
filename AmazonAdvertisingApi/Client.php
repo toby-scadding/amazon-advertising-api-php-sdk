@@ -58,8 +58,6 @@ class Client
         }
 
         $url = "https://{$this->tokenUrl}";
-        print($url);
-        die;
 
         $request = new CurlRequest();
         $request->setOption(CURLOPT_URL, $url);
