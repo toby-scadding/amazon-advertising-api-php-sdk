@@ -16,7 +16,6 @@ class Client
         "refreshToken" => null,
         "sandbox" => false);
 
-
     private $userAgent = null;
     private $endpoint = null;
     private $tokenUrl = null;
@@ -859,6 +858,8 @@ class Client
             "report",
             "reports/{$reportId}"
         );
+
+
         if ($req["success"]) {
             $json = json_decode($req["response"], true);
             if ($json["status"] == "SUCCESS") {
@@ -1046,8 +1047,8 @@ class Client
             }
             $this->endpoint = Regions::getEndpoint($this->config["region"], $endpointType);
             $this->tokenUrl = Regions::getEndpoint($this->config["region"], "tokenUrl");
-        } catch (Exception $e) {
-            $this->_logAndThrow("Invalid region or endpoint type");
+        } catch (\Exception $e) {
+            $this->_logAndThrow("Invalid region or endpoint type.");
         }
         return true;
     }
