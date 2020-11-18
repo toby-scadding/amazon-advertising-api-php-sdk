@@ -9,11 +9,13 @@ class RequestPrefixes
     public static function getPrefix($requestType) { 
     	switch ($requestType) { 
     		case 'profile': 
+                $prefix = Versions::PROFILE_API_VERSION . "/";
+                break; 
     		case 'report': 
-    			$prefix = Versions::API_VERSION . "/"; 
+    			$prefix = Versions::REPORT_API_VERSION . "/"; 
     			break;
     		case 'products': 
-    			$prefix = Versions::API_VERSION . "/sp/";
+    			$prefix = Versions::PRODUCT_API_VERSION . "/sp/";
     			break;
     		case 'display':
     			$prefix = "sd/";

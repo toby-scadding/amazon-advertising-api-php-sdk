@@ -58,6 +58,8 @@ class Client
         }
 
         $url = "https://{$this->tokenUrl}";
+        print($url);
+        die;
 
         $request = new CurlRequest();
         $request->setOption(CURLOPT_URL, $url);
@@ -67,7 +69,6 @@ class Client
         $request->setOption(CURLOPT_POSTFIELDS, rtrim($data, "&"));
 
         $response = $this->_executeRequest($request);
-
         $response_array = json_decode($response["response"], true);
         if (array_key_exists("access_token", $response_array)) {
             $this->config["accessToken"] = $response_array["access_token"];
