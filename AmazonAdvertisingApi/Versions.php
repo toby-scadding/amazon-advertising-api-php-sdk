@@ -3,8 +3,6 @@ namespace AmazonAdvertisingApi;
 
 class Versions
 {
-    public $versionStrings = array(
-        "apiVersion"         => "v2",
-        "applicationVersion" => "2.0"
-    );
+	const API_VERSION = "v2";
+	const APPLICATION_VERSION = "2.0";
 }
