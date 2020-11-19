@@ -1,28 +1,31 @@
 <?php
 namespace AmazonAdvertisingApi;
 
-require_once "../AmazonAdvertisingApi/Client.php";
+require_once "AmazonAdvertisingApi/Client.php";
+use PHPUnit\Framework\TestCase;
 
-class ClientTest extends \PHPUnit\Framework\TestCase
+class ClientTest extends TestCase
 {
     private $client = null;
     private $return_value = null;
     private $config = array(
-        "clientId" => "amzn1.application-oa2-client.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "clientSecret" => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        "region" => "na",
-        "accessToken" => "Atza%7Ctest",
-        "refreshToken" => "Atzr%7Ctest",
-        "sandbox" => true);
+        "clientId" => "",
+        "clientSecret" => "",
+        "refreshToken" => "",
+        "accessToken" => "",
+        "region" => "",
+        "sandbox" => true
+    );
 
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->return_value = array(
             "code" => "200",
             "success" => true,
             "requestId" => "test",
-            "response" => "SUCCESS");
+            "response" => "{\"status\":\"TESTING\"}"
+        );
 
         $this->client = $this->getMockBuilder("AmazonAdvertisingApi\Client")
                              ->setConstructorArgs(array($this->config))
@@ -42,7 +45,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         try {
             $client = new Client($testConfig);
         } catch (\Exception $expected) {
-            $this->assertRegExp("/Invalid parameter value for clientId./", strval($expected));
+            $this->assertMatchesRegularExpression("/Invalid parameter value for clientId./", strval($expected));
         }
     }
 
@@ -53,7 +56,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         try {
             $client = new Client($testConfig);
         } catch (\Exception $expected) {
-            $this->assertRegExp("/Invalid parameter value for clientSecret./", strval($expected));
+            $this->assertMatchesRegularExpression("/Invalid parameter value for clientSecret./", strval($expected));
         }
     }
 
@@ -64,7 +67,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         try {
             $client = new Client($testConfig);
         } catch (\Exception $expected) {
-            $this->assertRegExp("/Invalid region./", strval($expected));
+            $this->assertMatchesRegularExpression("/Invalid region or endpoint type./", strval($expected));
         }
     }
 
@@ -75,7 +78,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         try {
             $client = new Client($testConfig);
         } catch (\Exception $expected) {
-            $this->assertRegExp("/Invalid parameter value for accessToken./", strval($expected));
+            $this->assertMatchesRegularExpression("/Invalid parameter value for accessToken./", strval($expected));
         }
     }
 
@@ -86,7 +89,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         try {
             $client = new Client($testConfig);
         } catch (\Exception $expected) {
-            $this->assertRegExp("/Invalid parameter value for refreshToken./", strval($expected));
+            $this->assertMatchesRegularExpression("/Invalid parameter value for refreshToken./", strval($expected));
         }
     }
 
@@ -97,7 +100,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         try {
             $client = new Client($testConfig);
         } catch (\Exception $expected) {
-            $this->assertRegExp("/Invalid parameter value for sandbox./", strval($expected));
+            $this->assertMatchesRegularExpression("/Invalid parameter value for sandbox./", strval($expected));
         }
     }
 
@@ -119,313 +122,313 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetCampaign()
+    public function testGetSponsoredProductsCampaign()
     {
-        $request = $this->client->getCampaign("test");
+        $request = $this->client->getSponsoredProductsCampaign("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetCampaignEx()
+    public function testGetSponsoredProductsCampaignEx()
     {
-        $request = $this->client->getCampaignEx("test");
+        $request = $this->client->getSponsoredProductsCampaignEx("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testCreateCampaigns()
+    public function testCreateSponsoredProductsCampaigns()
     {
-        $request = $this->client->createCampaigns("test");
+        $request = $this->client->createSponsoredProductsCampaigns("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testArchiveCampaign()
+    public function testArchiveSponsoredProductsCampaign()
     {
-        $request = $this->client->archiveCampaign("test");
+        $request = $this->client->archiveSponsoredProductsCampaign("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListCampaigns()
+    public function testListSponsoredProductsCampaigns()
     {
-        $request = $this->client->listCampaigns();
+        $request = $this->client->listSponsoredProductsCampaigns();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListCampaignsEx()
+    public function testListSponsoredProductsCampaignsEx()
     {
-        $request = $this->client->listCampaignsEx();
+        $request = $this->client->listSponsoredProductsCampaignsEx();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetAdGroup()
+    public function testGetSponsoredProductsAdGroup()
     {
-        $request = $this->client->getAdGroup("test");
+        $request = $this->client->getSponsoredProductsAdGroup("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetAdGroupEx()
+    public function testGetSponsoredProductsAdGroupEx()
     {
-        $request = $this->client->getAdGroupEx("test");
+        $request = $this->client->getSponsoredProductsAdGroupEx("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testCreateAdGroups()
+    public function testCreateSponsoredProductsAdGroups()
     {
-        $request = $this->client->createAdGroups("test");
+        $request = $this->client->createSponsoredProductsAdGroups("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testUpdateAdGroups()
+    public function testUpdateSponsoredProductsAdGroups()
     {
-        $request = $this->client->updateAdGroups("test");
+        $request = $this->client->updateSponsoredProductsAdGroups("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testArchiveAdGroup()
+    public function testArchiveSponsoredProductsAdGroup()
     {
-        $request = $this->client->archiveAdGroup("test");
+        $request = $this->client->archiveSponsoredProductsAdGroup("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListAdGroups()
+    public function testListSponsoredProductsAdGroups()
     {
-        $request = $this->client->listAdGroups();
+        $request = $this->client->listSponsoredProductsAdGroups();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListAdGroupsEx()
+    public function testListSponsoredProductsAdGroupsEx()
     {
-        $request = $this->client->listAdGroupsEx();
+        $request = $this->client->listSponsoredProductsAdGroupsEx();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetBiddableKeyword()
+    public function testGetSponsoredProductsBiddableKeyword()
     {
-        $request = $this->client->getBiddableKeyword("test");
+        $request = $this->client->getSponsoredProductsBiddableKeyword("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetBiddableKeywordEx()
+    public function testGetSponsoredProductsBiddableKeywordEx()
     {
-        $request = $this->client->getBiddableKeywordEx("test");
+        $request = $this->client->getSponsoredProductsBiddableKeywordEx("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testCreateBiddableKeywords()
+    public function testCreateSponsoredProductsBiddableKeywords()
     {
-        $request = $this->client->createBiddableKeywords("test");
+        $request = $this->client->createSponsoredProductsBiddableKeywords("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function updateCreateBiddableKeywords()
+    public function testUpdateSponsoredProductsBiddableKeywords()
     {
-        $request = $this->client->updateBiddableKeywords("test");
+        $request = $this->client->updateSponsoredProductsBiddableKeywords("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testArchiveBiddableKeyword()
+    public function testArchiveSponsoredProductsBiddableKeyword()
     {
-        $request = $this->client->archiveBiddableKeyword("test");
+        $request = $this->client->archiveSponsoredProductsBiddableKeyword("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListBiddableKeywords()
+    public function testListSponsoredProductsBiddableKeywords()
     {
-        $request = $this->client->listBiddableKeywords();
+        $request = $this->client->listSponsoredProductsBiddableKeywords();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListBiddableKeywordsEx()
+    public function testListSponsoredProductsBiddableKeywordsEx()
     {
-        $request = $this->client->listBiddableKeywordsEx();
+        $request = $this->client->listSponsoredProductsBiddableKeywordsEx();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetNegativeKeyword()
+    public function testGetSponsoredProductsNegativeKeyword()
     {
-        $request = $this->client->getNegativeKeyword("test");
+        $request = $this->client->getSponsoredProductsNegativeKeyword("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetNegativeKeywordEx()
+    public function testGetSponsoredProductsNegativeKeywordEx()
     {
-        $request = $this->client->getNegativeKeywordEx("test");
+        $request = $this->client->getSponsoredProductsNegativeKeywordEx("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testCreateNegativeKeywords()
+    public function testCreateSponsoredProductsNegativeKeywords()
     {
-        $request = $this->client->createNegativeKeywords("test");
+        $request = $this->client->createSponsoredProductsNegativeKeywords("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testUpdateNegativeKeywords()
+    public function testUpdateSponsoredProductsNegativeKeywords()
     {
-        $request = $this->client->updateNegativeKeywords("test");
+        $request = $this->client->updateSponsoredProductsNegativeKeywords("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testArchiveNegativeKeyword()
+    public function testArchiveSponsoredProductsNegativeKeyword()
     {
-        $request = $this->client->archiveNegativeKeyword("test");
+        $request = $this->client->archiveSponsoredProductsNegativeKeyword("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListNegativeKeywords()
+    public function testListSponsoredProductsNegativeKeywords()
     {
-        $request = $this->client->listNegativeKeywords();
+        $request = $this->client->listSponsoredProductsNegativeKeywords();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListNegativeKeywordsEx()
+    public function testListSponsoredProductsNegativeKeywordsEx()
     {
-        $request = $this->client->listNegativeKeywordsEx();
+        $request = $this->client->listSponsoredProductsNegativeKeywordsEx();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetCampaignNegativeKeyword()
+    public function testGetSponsoredProductsCampaignNegativeKeyword()
     {
-        $request = $this->client->getCampaignNegativeKeyword("test");
+        $request = $this->client->getSponsoredProductsCampaignNegativeKeyword("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetCampaignNegativeKeywordEx()
+    public function testGetSponsoredProductsCampaignNegativeKeywordEx()
     {
-        $request = $this->client->getCampaignNegativeKeywordEx("test");
+        $request = $this->client->getSponsoredProductsCampaignNegativeKeywordEx("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testCreateCampaignNegativeKeywords()
+    public function testCreateSponsoredProductsCampaignNegativeKeywords()
     {
-        $request = $this->client->createCampaignNegativeKeywords("test");
+        $request = $this->client->createSponsoredProductsCampaignNegativeKeywords("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testUpdateCampaignNegativeKeywords()
+    public function testUpdateSponsoredProductsCampaignNegativeKeywords()
     {
-        $request = $this->client->updateCampaignNegativeKeywords("test");
+        $request = $this->client->updateSponsoredProductsCampaignNegativeKeywords("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testRemoveCampaignNegativeKeyword()
+    public function testRemoveSponsoredProductsCampaignNegativeKeyword()
     {
-        $request = $this->client->removeCampaignNegativeKeyword("test");
+        $request = $this->client->removeSponsoredProductsCampaignNegativeKeyword("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListCampaignNegativeKeywords()
+    public function testListSponsoredProductsCampaignNegativeKeywords()
     {
-        $request = $this->client->listCampaignNegativeKeywords();
+        $request = $this->client->listSponsoredProductsCampaignNegativeKeywords();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListCampaignNegativeKeywordsEx()
+    public function testListSponsoredProductsCampaignNegativeKeywordsEx()
     {
-        $request = $this->client->listCampaignNegativeKeywordsEx();
+        $request = $this->client->listSponsoredProductsCampaignNegativeKeywordsEx();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetProductAd()
+    public function testGetSponsoredProductsProductAd()
     {
-        $request = $this->client->getProductAd("test");
+        $request = $this->client->getSponsoredProductsProductAd("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetProductAdEx()
+    public function testGetSponsoredProductsProductAdEx()
     {
-        $request = $this->client->getProductAdEx("test");
+        $request = $this->client->getSponsoredProductsProductAdEx("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testCreateProductAds()
+    public function testCreateSponsoredProductsProductAds()
     {
-        $request = $this->client->createProductAds("test");
+        $request = $this->client->createSponsoredProductsProductAds("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testUpdateProductAds()
+    public function testUpdateSponsoredProductsProductAds()
     {
-        $request = $this->client->updateProductAds("test");
+        $request = $this->client->updateSponsoredProductsProductAds("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testArchiveProductAd()
+    public function testArchiveSponsoredProductsProductAd()
     {
-        $request = $this->client->archiveProductAd("test");
+        $request = $this->client->archiveSponsoredProductsProductAd("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListProductAds()
+    public function testListSponsoredProductsProductAds()
     {
-        $request = $this->client->listProductAds();
+        $request = $this->client->listSponsoredProductsProductAds();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testListProductAdsEx()
+    public function testListSponsoredProductsProductAdsEx()
     {
-        $request = $this->client->listProductAdsEx();
+        $request = $this->client->listSponsoredProductsProductAdsEx();
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetAdGroupBidRecommendations()
+    public function testGetSponsoredProductsAdGroupBidRecommendations()
     {
-        $request = $this->client->getAdGroupBidRecommendations("test");
+        $request = $this->client->getSponsoredProductsAdGroupBidRecommendations("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetKeywordBidRecommendations()
+    public function testGetSponsoredProductsKeywordBidRecommendations()
     {
-        $request = $this->client->getKeywordBidRecommendations("test");
+        $request = $this->client->getSponsoredProductsKeywordBidRecommendations("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testBulkGetKeywordBidRecommendations()
+    public function testBulkGetSponsoredProductsKeywordBidRecommendations()
     {
-        $request = $this->client->getKeywordBidRecommendations("test");
+        $request = $this->client->bulkGetSponsoredProductsKeywordBidRecommendations(123, "test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetAdGroupKeywordSuggestions()
+    public function testGetSponsoredProductsAdGroupKeywordSuggestions()
     {
-        $request = $this->client->getAdGroupKeywordSuggestions(
+        $request = $this->client->getSponsoredProductsAdGroupKeywordSuggestions(
             array("adGroupId" => 12345));
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetAdGroupKeywordSuggestionsEx()
+    public function testGetSponsoredProductsAdGroupKeywordSuggestionsEx()
     {
-        $request = $this->client->getAdGroupKeywordSuggestionsEx(
+        $request = $this->client->getSponsoredProductsAdGroupKeywordSuggestionsEx(
             array("adGroupId" => 12345));
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetAsinKeywordSuggestions()
+    public function testGetSponsoredProductsAsinKeywordSuggestions()
     {
-        $request = $this->client->getAsinKeywordSuggestions(
+        $request = $this->client->getSponsoredProductsAsinKeywordSuggestions(
             array("asin" => 12345));
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testBulkGetAsinKeywordSuggestions()
+    public function testBulkGetSponsoredProductsAsinKeywordSuggestions()
     {
-        $request = $this->client->bulkGetAsinKeywordSuggestions(
+        $request = $this->client->bulkGetSponsoredProductsAsinKeywordSuggestions(
             array("asins" => array("ASIN1", "ASIN2")));
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testRequestSnapshot()
+    public function testRequestSponsoredProductsSnapshot()
     {
-        $request = $this->client->requestSnapshot("test");
+        $request = $this->client->requestSponsoredProductsSnapshot("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testGetSnapshot()
+    public function testGetSponsoredProductsSnapshot()
     {
-        $request = $this->client->getSnapshot("test");
+        $request = $this->client->getSponsoredProductsSnapshot("test");
         $this->assertEquals($this->return_value, $request);
     }
 
-    public function testRequestReport()
+    public function testRequestSponsoredProductsReport()
     {
-        $request = $this->client->requestReport("test");
+        $request = $this->client->requestSponsoredProductsReport("test");
         $this->assertEquals($this->return_value, $request);
     }
 
