@@ -56,10 +56,8 @@ class Client
             $data .= "{$k}=".rawurlencode($v)."&";
         }
 
-        $url = "https://{$this->tokenUrl}";
-
         $request = new CurlRequest();
-        $request->setOption(CURLOPT_URL, $url);
+        $request->setOption(CURLOPT_URL, $this->tokenUrl);
         $request->setOption(CURLOPT_HTTPHEADER, $headers);
         $request->setOption(CURLOPT_USERAGENT, $this->userAgent);
         $request->setOption(CURLOPT_POST, true);
@@ -858,7 +856,6 @@ class Client
             "report",
             "reports/{$reportId}"
         );
-
 
         if ($req["success"]) {
             $json = json_decode($req["response"], true);
